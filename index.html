@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-no {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        .happy-animation {
+            display: none;
+            font-size: 24px;
+            color: #FFD700;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quieres ser mi novia?</h1>
+        <div class="buttons">
+            <button class="btn btn-yes" onclick="showHappiness()">Sí</button>
+            <button class="btn btn-no" onmouseover="moveNoButton(this)">No</button>
+        </div>
+        <div class="happy-animation" id="happyAnimation">
+            🎉 ¡Qué felicidad! 🎉
+        </div>
+    </div>
+
+    <script>
+        function moveNoButton(button) {
+            const container = button.parentElement;
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            const offset = 10; // Offset to avoid positioning outside the container
+
+            let newLeft = Math.random() * (containerRect.width - buttonRect.width - offset);
+            let newTop = Math.random() * (containerRect.height - buttonRect.height - offset);
+
+            button.style.position = 'absolute';
+            button.style.left = `${newLeft}px`;
+            button.style.top = `${newTop}px`;
+        }
+
+        function showHappiness() {
+            document.getElementById('happyAnimation').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
